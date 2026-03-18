@@ -7,7 +7,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score, mean_squared_error
 
 # Title
-st.title("🚖 PragyanAI Taxi Fare Prediction App (End-to-End ML)")
+st.title(" PragyanAI Taxi Fare Prediction App (End-to-End ML)")
 
 # Load Data
 @st.cache_data
@@ -21,7 +21,7 @@ def load_data():
 df = load_data()
 
 # Dataset Preview
-st.subheader("📊 Dataset Preview")
+st.subheader(" Dataset Preview")
 st.write(df.head())
 
 # Prepare Data
@@ -44,12 +44,12 @@ y_pred = model.predict(X_test)
 r2 = r2_score(y_test, y_pred)
 rmse = np.sqrt(mean_squared_error(y_test, y_pred))
 
-st.subheader("📈 Model Performance")
+st.subheader(" Model Performance")
 st.write(f"R² Score: {r2:.2f}")
 st.write(f"RMSE: {rmse:.2f}")
 
 # User Input
-st.subheader("🚗 Enter Trip Details")
+st.subheader(" Enter Trip Details")
 
 distance = st.number_input(
     "Step 1: Enter Distance (km)",
@@ -75,10 +75,10 @@ hour = st.number_input(
 if st.button("Predict Fare"):
     input_data = np.array([[distance]])   # ✅ FIXED
     prediction = model.predict(input_data)
-    st.success(f"💰 Estimated Fare: ${prediction[0]:.2f}")
+    st.success(f" Estimated Fare: ${prediction[0]:.2f}")
 
 # Graph
-st.subheader("📉 Distance vs Fare")
+st.subheader(" Distance vs Fare")
 
 fig, ax = plt.subplots()
 ax.scatter(X, y)
