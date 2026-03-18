@@ -9,20 +9,22 @@ from sklearn.metrics import r2_score, mean_squared_error
 # Title
 st.title(" PragyanAI Taxi Fare Prediction App (End-to-End ML)")
 
-# Load Data
 @st.cache_data
 def load_data():
-    df = pd.read_csv("taxis.csv")
-    df = df[['distance', 'fare']].dropna()
-    df['distance'] = pd.to_numeric(df['distance'], errors='coerce')
-    df['fare'] = pd.to_numeric(df['fare'], errors='coerce')
+    url = "taxis.csv"
+    df = pd.read_csv(url)
+    df = df.convert_dtypes()
     return df
 
 df = load_data()
 
-# Dataset Preview
-st.subheader(" Dataset Preview")
+st.subheader("PragyanAI Dataset Preview")
 st.write(df.head())
+
+df = df[['distance', 'fare']]
+df['distance'] = pd.to_numeric(df['distance'], errors='coerce')
+df['fare'] = pd.to_numeric(df['fare'], errors='coerce')
+df = df.dropna()
 
 # Prepare Data
 X = df[['distance']]
