@@ -77,12 +77,4 @@ if st.button("Predict Fare"):
     prediction = model.predict(input_data)
     st.success(f" Estimated Fare: ${prediction[0]:.2f}")
 
-# Graph
-st.subheader(" Distance vs Fare")
 
-fig, ax = plt.subplots()
-ax.scatter(X, y)
-ax.plot(X_test, y_pred)
-ax.set_xlabel("Distance (km)")
-ax.set_ylabel("Fare")
-st.pyplot(fig)
